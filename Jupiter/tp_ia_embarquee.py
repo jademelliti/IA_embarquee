@@ -102,13 +102,19 @@ smote = SMOTE(random_state=42)
 X_res, Y_res = smote.fit_resample(X, Y_single)
 
 
+#NORMALISATION DES DONNEES !!!!!!!!
+scaler = StandardScaler()
+X_res_normalized = scaler.fit_transform(X_res)
+
+
+
 # Convertir les étiquettes rééchantillonnées en format multilabel (one-hot encoding)
 Y_res_multilabel = np.zeros((Y_res.size, Y.shape[1]))
 Y_res_multilabel[np.arange(Y_res.size), Y_res] = 1
 
 
 # Diviser les données
-X_train, X_val, Y_train, Y_val = train_test_split(X_res, Y_res_multilabel, test_size=0.30, random_state=42)
+X_train, X_val, Y_train, Y_val = train_test_split(X_res_normalized, Y_res_multilabel, test_size=0.30, random_state=42)
 X_val, X_test, Y_val, Y_test = train_test_split(X_val, Y_val, test_size=0.5, random_state=42)
 
 np.save('Xtest.npy', X_test)
