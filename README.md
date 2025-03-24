@@ -3,8 +3,8 @@ Ceci est le fruit du travail de Jade MELLITI et Alexandra BARON.
 # Rapport de Projet - IA Embarquée sur STM32
 
 ## Table des Matières
-1. [Introduction](#-introduction)
-2. [Architecture du Projet](#-architecture-du-projet)
+1. [Introduction](#introduction)
+2. [Architecture du Projet](#architecture-du-projet)
 3. [Développement du Modèle ML](#-développement-du-modèle-ml)
 4. [Intégration sur STM32](#-intégration-sur-stm32)
 5. [Analyse des Performances](#-analyse-des-performances)
@@ -14,14 +14,17 @@ Ceci est le fruit du travail de Jade MELLITI et Alexandra BARON.
 ## Introduction
 Ce projet vise à développer un un réseau de neurones en Python pour la maintenance prédictive et à le déployer sur une carte STM32L4R9 pour une application embarquée. 
 
-## 🏗 Architecture du Projet
+## Architecture du Projet
 Notre solution se compose de deux parties principales :
 1. *Partie PC* : Développement et entraînement du modèle
 2. *Partie Embarquée* : Déploiement sur STM32
 
 IA_EMBARQUE/
+
 ├── Firmware/                               # Programmes réalisés sur STM32CubeIDE
+
 │   ├── App
+
 |   |     └── app_x-cube-ai.c
 |   |     └── ia_embarque_data_params.c
 |   |     └── ia_embarque_data.c
