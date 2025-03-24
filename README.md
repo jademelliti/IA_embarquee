@@ -7,10 +7,9 @@ Ceci est le fruit du travail de Jade MELLITI et Alexandra BARON.
 2. [Objectifs](#objectifs)
 3. [Architecture du Projet](#architecture-du-projet)
 4. [Méthodologie](#méthodologie)
-5. [Intégration sur STM32](#-intégration-sur-stm32)
-6. [Analyse des Performances](#-analyse-des-performances)
-7. [Prise de Recul](#-prise-de-recul)
-8. [Conclusion](#-conclusion)
+5. [Résultats Clés et Analyse des Performances](#résultats-clés-et-analyse-des-performances)
+6. [Conclusion](#conclusion)
+7. [Guide d'utilisation](#guide-d-utilisation)
 
 ## Introduction
 Ce projet vise à concevoir, entraîner et déployer un réseau de neurones profond (DNN) en Python pour la maintenance prédictive, en utilisant le jeu de données **AI4I 2020 Predictive Maintenance Dataset**. L'objectif final est d'exporter le modèle pour une exécution sur une carte **STM32L4R9**.
@@ -62,12 +61,15 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
   - Utilisation de **X-Cube-AI** pour générer le code C.
   - Communication UART avec un script Python pour valider les prédictions. ![script Python](Jupiter/Communication_STM32_NN.py)  
 
-## Résultats Clés 
+## Résultats Clés et Analyse des Performances
 ![Conclusion à la fin du fichier](evaluation_results.txt)  
 - **Précision globale** : 96% sur le test set.
 - **Détection des pannes** :
-  - *TWF* : 100% recall, *HDF* : 100% recall, *PWF* : 100% recall, *OSF* : 90% recall, *NF* : 88% recall.
-
+  - *TWF* : 100% recall, *HDF* : 100% recall, *PWF* : 100% recall, *OSF* : 90% recall (2 faux négatifs ), *NF* : 88% recall (2 faux positifs).
+- **Sur STM32** : 
+- Efficacité mémoire : 
+    - Utilise seulement 6.3% de la Flash disponible (512 KiB sur STM32L4R9)
+    - Occupation RAM négligeable (0.5% des 640 KiB disponibles)
 
 ## Conclusion
 Ce projet démontre l'importance de l'équilibrage des données pour les tâches de maintenance prédictive. Le modèle final, bien que simple, montre des performances robustes et est adapté aux contraintes matérielles de la STM32. Les pistes d'amélioration incluent l'ajout de features temporelles ou l'utilisation de réseaux plus complexes (LSTM).
@@ -76,6 +78,11 @@ Ce projet démontre l'importance de l'équilibrage des données pour les tâches
 
 ## Guide d'Utilisation
 ### 1. Entraînement du Modèle
-```bash
-# Exécuter le notebook Jupiter/TP_IA_EMBARQUEE.ipynb
-# Génère les fichiers H5 et TFLite
+- Exécuter le notebook Jupiter/TP_IA_EMBARQUEE.ipynb
+- Génère les fichiers H5 et TFLite
+### 2. Déploiement sur STM32
+- Importer le modèle .tflite dans STM32CubeMX avec les fichiers Xtest.txt et Ytest.txt.
+- Flasher la carte et utiliser Communication_STM32_NN.py pour tester.
+### 3. Dépendances
+- Python : TensorFlow 2.x, imbalanced-learn, pandas.
+- STM32CubeIDE : X-Cube-AI v7.1.0.
