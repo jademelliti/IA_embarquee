@@ -6,7 +6,7 @@ Ceci est le fruit du travail de Jade MELLITI et Alexandra BARON.
 1. [Introduction](#introduction)
 2. [Objectifs](#objectifs)
 3. [Architecture du Projet](#architecture-du-projet)
-4. [Développement du Modèle ML](#-développement-du-modèle-ml)
+4. [Méthodologie](#méthodologie)
 5. [Intégration sur STM32](#-intégration-sur-stm32)
 6. [Analyse des Performances](#-analyse-des-performances)
 7. [Prise de Recul](#-prise-de-recul)
@@ -37,38 +37,45 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
   </div>
 </div>
 
-IA_EMBARQUE/
+## Méthodologie
 
-├── Firmware/                               # Programmes réalisés sur STM32CubeIDE
+### 1. Analyse et Prétraitement des Données
+- **Dataset** : 10 000 échantillons de capteurs industriels avec 5 types de pannes.
+- **Problématique** : Déséquilibre majeur entre classes.
+- **Solutions** :
+  - Suppression des pannes aléatoires (*RNF* non prévisibles) et des pannes non prévues.
+  - Rééchantillonnage via **SMOTE** pour équilibrer les classes.
 
-│   ├── App
+### 2. Architecture du Modèle
+- **Modèle DNN** : 
+  - Couches denses (64 neurones, ReLU) + Softmax en sortie.
+  - Loss : `categorical_crossentropy`, Optimiseur : Adam.
+- **Résultats avant équilibrage** : 
+  - Modèle biaisé vers la classe majoritaire qui est Non Failure. ![Matrice de Confusion](images/confusion_matrix_premier_model.png)  
+- **Après SMOTE** :
+  - Accuracy équilibrée.
+  - Matrice de confusion montrant une bonne détection des pannes. ![Matrice de Confusion](images/confusion_matrix_model_corrige.png)  
 
-|   |     └── app_x-cube-ai.c
-|   |     └── ia_embarque_data_params.c
-|   |     └── ia_embarque_data.c
-|   |     └── ia_embarque_generate_report.txt
-│   └── Core_Src
-|   |     └── main.c
-├── images/                                 # Résultats du JupiterNoteBook.
-├── Jupiter/                                # Notebooks d'analyse et codes pythons de communications + les résultats
-│   └── TP_IA_EMBARQUEE.ipynb               # Notebook
-│   └── ai4i2020.csv                        # Dataset
-│   └── Communication_STM32_NN.py           # Code python pour l'inférence / Communication par Uart avec STM32 
-│   └── my_mlp_model.h5                     # Modèle au format h5
-│   └── my_mlp_model.tflite                 # Modèle au format tflite
-│   └── Xtest.npy                           # Données de test
-│   └── Ytest.npy                           # Données de test
-└── evaluation_results.txt                  # Résultats + CONCLUSION 
-└── README.md
+### 3. Déploiement sur STM32
+- **Conversion** : Modèle exporté en `.tflite` via TensorFlow Lite.
+- **Intégration** : 
+  - Utilisation de **X-Cube-AI** pour générer le code C.
+  - Communication UART avec un script Python pour valider les prédictions. ![script Python](Jupiter/Communication_STM32_NN.py)  
+
+## Résultats Clés 
+![Conclusion à la fin du fichier](evaluation_results.txt)  
+- **Précision globale** : 96% sur le test set.
+- **Détection des pannes** :
+  - *TWF* : 100% recall, *HDF* : 100% recall, *PWF* : 100% recall, *OSF* : 90% recall, *NF* : 88% recall.
 
 
-IA_EMBARQUE/
-├── Firmware/ # Code STM32CubeIDE (inférence, gestion des données)
-│ ├── App/ # Fichiers générés par X-Cube-AI
-│ └── Core_Src/ # Code principal (main.c)
-├── images/ # Visualisations des résultats (matrices, courbes)
-├── Jupiter/ # Notebooks et scripts Python
-│ ├── TP_IA_EMBARQUEE.ipynb # Analyse complète et entraînement
-│ ├── Communication_STM32_NN.py # Communication UART avec la STM32
-│ └── Modèles (H5/TFLite) et données de test
-└── evaluation_results.txt # Synthèse des performances                                 
+## Conclusion
+Ce projet démontre l'importance de l'équilibrage des données pour les tâches de maintenance prédictive. Le modèle final, bien que simple, montre des performances robustes et est adapté aux contraintes matérielles de la STM32. Les pistes d'amélioration incluent l'ajout de features temporelles ou l'utilisation de réseaux plus complexes (LSTM).
+
+---
+
+## Guide d'Utilisation
+### 1. Entraînement du Modèle
+```bash
+# Exécuter le notebook Jupiter/TP_IA_EMBARQUEE.ipynb
+# Génère les fichiers H5 et TFLite
