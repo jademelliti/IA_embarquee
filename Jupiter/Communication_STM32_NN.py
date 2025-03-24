@@ -25,7 +25,7 @@ def evaluate_model_on_STM32(iterations, serial_port):
     label_counts = np.zeros(Y_test.shape[1])  # Pour compter le nombre de chaque label
     correct_counts = np.zeros(Y_test.shape[1])  # Pour compter les prédictions correctes par label
 
-    with open("evaluation_results.txt", "w") as file:
+    with open("evaluation_results.txt", "w") as file:  # Ouverture du fichier
         for i in range(iterations):
             log = f"----- Iteration {i+1} -----\n"
             send_inputs_to_STM32(X_test[i], serial_port)
@@ -44,20 +44,20 @@ def evaluate_model_on_STM32(iterations, serial_port):
             log += f"----------------------- Accuracy: {accuracy:.2f}\n\n"
             print(log)
             file.write(log)
-    
-    # Calcul de l'accuracy moyenne par label
-    label_accuracy = correct_counts / label_counts
-    
-    # Conclusion
-    conclusion = "\n----- Conclusion -----\n"
-    conclusion += f"Global Accuracy: {accuracy:.2f}\n"
-    conclusion += "Accuracy per label:\n"
-    for label, acc in enumerate(label_accuracy):
-        conclusion += f"   Label {label}: {acc:.2f} (Count: {int(label_counts[label])})\n"
-    conclusion += "-----------------------\n"
-    
-    print(conclusion)
-    file.write(conclusion)
+        
+        # Calcul de l'accuracy moyenne par label
+        label_accuracy = correct_counts / label_counts
+        
+        # Conclusion
+        conclusion = "\n----- Conclusion -----\n"
+        conclusion += f"Global Accuracy: {accuracy:.2f}\n"
+        conclusion += "Accuracy per label:\n"
+        for label, acc in enumerate(label_accuracy):
+            conclusion += f"   Label {label}: {acc:.2f} (Count: {int(label_counts[label])})\n"
+        conclusion += "-----------------------\n"
+        
+        print(conclusion)
+        file.write(conclusion)  # Écriture de la conclusion dans le fichier
     
     return accuracy
 

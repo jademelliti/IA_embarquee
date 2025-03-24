@@ -498,3 +498,13 @@
    Received output: [0.0, 0.0, 0.0, 0.0, 0.996078431372549]
 ----------------------- Accuracy: 0.96
 
+
+----- Conclusion -----
+Global Accuracy: 0.96
+Accuracy per label:
+   Label 0: 1.00 (Count: 17)
+   Label 1: 1.00 (Count: 20)
+   Label 2: 1.00 (Count: 26)
+   Label 3: 0.90 (Count: 20)
+   Label 4: 0.88 (Count: 17)
+-----------------------
