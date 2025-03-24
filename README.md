@@ -24,22 +24,18 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
 
 ## Architecture du Projet
 
-IA_EMBARQUE/
-├── 📂 Firmware/
-│   ├── 📂 App/                # Configuration X-Cube-AI
-│   │   ├── app_x-cube-ai.c    # Interface AI
-│   │   └── ...                # Fichiers générés
-│   │
-│   └── 📂 Core_Src/           # Logique applicative
-│       └── main.c             # Point d'entrée
-│
-├── 📂 images/                 # Graphiques
-│   ├── training_accuracy.png
-│   └── confusion_matrix.png
-│
-└── 📂 Jupiter/                # Développement IA
-    ├── 📄 TP_IA_EMBARQUEE.ipynb  # Entraînement
-    └── 📄 *.tflite            # Modèle optimisé
+<div style="font-family: monospace; line-height: 1.5">
+  <strong>IA_EMBARQUE/</strong>
+  <div style="margin-left: 15px">
+    ├── 📂 <strong>Firmware</strong>
+    <div style="margin-left: 15px">
+      ├── 📁 App<br>
+      └── 📁 Core_Src
+    </div>
+    ├── 📂 <strong>images</strong><br>
+    └── 📂 <strong>Jupiter</strong>
+  </div>
+</div>
 
 IA_EMBARQUE/
 
