@@ -63,6 +63,7 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
 
 ## Résultats Clés et Analyse des Performances
 ![Analyse du modèle issue de STM32CubreIDE](Firmware/Analyse_STM32.md.txt) 
+
 ![Conclusion à la fin du fichier pour l'inférence](evaluation_results.txt)  
 - **Précision globale** : 96% sur le test set.
 - **Détection des pannes** :
