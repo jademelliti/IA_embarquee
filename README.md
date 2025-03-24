@@ -68,8 +68,7 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
 - **Précision globale** : 96% sur le test set.
 - **Détection des pannes** :
   - *TWF* : 100% recall, *HDF* : 100% recall, *PWF* : 100% recall, *OSF* : 90% recall (2 faux négatifs ), *NF* : 88% recall (2 faux positifs).
-- **Sur STM32** : 
-- **Efficacité mémoire** : 
+- **Sur STM32 - Efficacité mémoire** : 
     - Utilise seulement 6.3% de la Flash disponible (512 KiB sur STM32L4R9)
     - Occupation RAM négligeable (0.5% des 640 KiB disponibles)
 
