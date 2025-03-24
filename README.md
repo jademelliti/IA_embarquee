@@ -22,12 +22,24 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
 4. **Conversion pour cible embarquée** : Export au format TFLite.
 5. **Intégration sur STM32** : Déploiement via STM32CubeIDE.
 
----
-
 ## Architecture du Projet
-Notre solution se compose de deux parties principales :
-1. *Partie PC* : Développement et entraînement du modèle
-2. *Partie Embarquée* : Déploiement sur STM32
+
+IA_EMBARQUE/
+├── 📂 Firmware/
+│   ├── 📂 App/                # Configuration X-Cube-AI
+│   │   ├── app_x-cube-ai.c    # Interface AI
+│   │   └── ...                # Fichiers générés
+│   │
+│   └── 📂 Core_Src/           # Logique applicative
+│       └── main.c             # Point d'entrée
+│
+├── 📂 images/                 # Graphiques
+│   ├── training_accuracy.png
+│   └── confusion_matrix.png
+│
+└── 📂 Jupiter/                # Développement IA
+    ├── 📄 TP_IA_EMBARQUEE.ipynb  # Entraînement
+    └── 📄 *.tflite            # Modèle optimisé
 
 IA_EMBARQUE/
 
