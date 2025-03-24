@@ -82,7 +82,7 @@ Ce projet démontre l'importance de l'équilibrage des données pour les tâches
 - Exécuter le notebook Jupiter/TP_IA_EMBARQUEE.ipynb
 - Génère les fichiers H5 et TFLite
 ### 2. Déploiement sur STM32
-- Importer le modèle .tflite dans STM32CubeMX avec les fichiers Xtest.txt et Ytest.txt.
+- Importer le modèle .tflite dans STM32CubeMX avec les fichiers Xtest.npy et Ytest.npy.
 - Flasher la carte et utiliser Communication_STM32_NN.py pour tester.
 ### 3. Dépendances
 - Python : TensorFlow 2.x, imbalanced-learn, pandas.
