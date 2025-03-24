@@ -62,14 +62,14 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
   - Communication UART avec un script Python pour valider les prédictions. ![script Python](Jupiter/Communication_STM32_NN.py)  
 
 ## Résultats Clés et Analyse des Performances
-![Analyse du modèle issue de STM32CubreIDE](Firmware/Analyse_STM32.md.txt) 
+![Analyse du modèle issue de STM32CubeIDE](Firmware/Analyse_STM32.md.txt) 
 
 ![Conclusion à la fin du fichier pour l'inférence](evaluation_results.txt)  
 - **Précision globale** : 96% sur le test set.
 - **Détection des pannes** :
   - *TWF* : 100% recall, *HDF* : 100% recall, *PWF* : 100% recall, *OSF* : 90% recall (2 faux négatifs ), *NF* : 88% recall (2 faux positifs).
 - **Sur STM32** : 
-- Efficacité mémoire : 
+- **Efficacité mémoire** : 
     - Utilise seulement 6.3% de la Flash disponible (512 KiB sur STM32L4R9)
     - Occupation RAM négligeable (0.5% des 640 KiB disponibles)
 
