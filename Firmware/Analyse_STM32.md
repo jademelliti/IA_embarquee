@@ -1,5 +1,3 @@
-
-
 Analyzing model 
 C:/Users/Alexandra/STM32Cube/Repository/Packs/STMicroelectronics/X-CUBE-AI/10.0.0/Utilities/windows/stedgeai.exe analyze --target stm32l4 --name ia_embarque -m C:/Users/Alexandra/Desktop/S8/IA MANUFACTURING/IA_emabrque_avec_jade/IA_embarquee/Jupiter/my_mlp_model.tflite --compression none --verbosity 1 --workspace C:/Users/ALEXAN~1/AppData/Local/Temp/mxAI_workspace2847865453630015774745826494843963 --output C:/Users/Alexandra/.stm32cubemx/ia_embarque_output 
 ST Edge AI Core v2.0.0-20049 
