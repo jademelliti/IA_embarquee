@@ -73,7 +73,7 @@ Ce projet vise à concevoir, entraîner et déployer un réseau de neurones prof
     - Occupation RAM négligeable (0.5% des 640 KiB disponibles)
 
 ## Conclusion
-Ce projet démontre l'importance de l'équilibrage des données pour les tâches de maintenance prédictive. Le modèle final, bien que simple, montre des performances robustes et est adapté aux contraintes matérielles de la STM32. Les pistes d'amélioration incluent l'ajout de features temporelles ou l'utilisation de réseaux plus complexes (LSTM).
+Ce projet démontre l'importance de l'équilibrage des données pour les tâches de maintenance prédictive. Le modèle final, bien que simple, montre des performances robustes et est adapté aux contraintes matérielles de la STM32.
 
 ---
 
